@@ -1,13 +1,15 @@
 const mongoose = require("mongoose")
+const Schema = mongoose.Schema
+const user = require("../models/user.model")
 
-const subscription = new mongoose.Schema({
+const subscriptionSchema = new Schema({
     name : {
         type : String,
         required : true
     },
     price : {
         type : Number,
-        required: true
+        required: true  
     },
     billingCycle : {
         type : Date,
@@ -19,9 +21,9 @@ const subscription = new mongoose.Schema({
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId, // ref b objectID
-        ref: "User",
+        ref: "user",
         required: true 
     }
 })
 
-module.exports = mongoose.model("transaction", transactionSchema)
+module.exports = mongoose.model("subscription", subscriptionSchema)
