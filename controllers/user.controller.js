@@ -3,7 +3,7 @@
 const User = require("../models/user.model")
 const bcrypt = require("bcrypt")
 
-const createUser = async(req, res) => {
+const signUp = async(req, res) => {
     const {name, email, password, role} = req.body
     if(!name || !email || !password){
         return res.status(400).json({message : "You must fill all fields !"})
@@ -24,4 +24,4 @@ const createUser = async(req, res) => {
     }
 
 }
-module.exports = {createUser}
+module.exports = {signUp}
