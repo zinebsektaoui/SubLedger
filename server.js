@@ -13,7 +13,7 @@ db()
 
 app.use("/users", userRoutes)
 app.use("/admin", adminRoutes)
-app.use("/subscriptions", subscriptionRoutes)
+app.use("/subscriptions",subscriptionRoutes)
 
 
 app.listen(process.env.PORT, () => {
