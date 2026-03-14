@@ -12,18 +12,22 @@ const subscriptionSchema = new Schema({
         required: true  
     },
     billingCycle : {
-        type : Date,
-        required : true
-    },
-    timestamp : {
-        createdAt : true,
-        updatedAt : false
+        type : String,
+        required : true,
+        enum : ["Monthly", "Yearly"]
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId, // ref b objectID
         ref: "user",
         required: true 
+    },
+},{
+    timestamps : {
+        createdAt : true,
+        updatedAt : false
     }
 })
-
 module.exports = mongoose.model("subscription", subscriptionSchema)
+
+
+// timestamps  are always passed on the second parameter of the schema
