@@ -1,5 +1,3 @@
-// const mongoose = require("mongoose")
-// const express = require("express")
 const User = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
@@ -7,13 +5,6 @@ require("dotenv").config()
 
 const signUp = async(req, res) => {
     const {name, email, password, role} = req.body
-    if(!name || !email || !password){
-        return res.status(400).json({message : "You must fill all fields !"})
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if(!emailRegex.test(email)){
-        return res.status(400).json({message : "Email format invalid !"})
-    }
     try{
         const hashedPwd = await bcrypt.hash(password, 10) // 10 = salt rounds (security level  and performance)
         if (role === "admin") {
