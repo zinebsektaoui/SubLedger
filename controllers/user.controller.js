@@ -47,7 +47,7 @@ const signIn = async(req, res) => {
             if(!isMatching){
                 return res.status(400).json({error : "Password invalid"})
             }
-            // req.user = user // store user f object called req.user
+            req.user = user // store user f object called req.user
             const token = jwt.sign(
                 {id : user._id, email : user.email, password : user.password, role : user.role}, // payload => data dyel user logged in
                 process.env.JWT_SECRET,
